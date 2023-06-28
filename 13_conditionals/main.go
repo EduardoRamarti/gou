@@ -31,4 +31,11 @@ func main() {
 	} else {
 		fmt.Println("Calificacion no valida")
 	}
+
+	//Declarar varaibles dentro del if statement
+	if nombre, edad := "Coder", 7; nombre == "Coder" { // variables := valores ; comparacion
+		fmt.Println("Hola", nombre, "te damos la bienvenida al mundo code")
+	} else {
+		fmt.Println("Los valores son: ", nombre, edad)
+	}
 }
