@@ -5,8 +5,9 @@ import "fmt"
 // creo mi tipo de dato operacion
 type Operacion func(num1, num2 int) int
 
+// Creo mi funcion  que recibe un string y retorna un tipo Operacion (funcion)
 func crearOperacion(tipo string) Operacion {
-	if tipo == "suma" {
+	if tipo == "suma" { //si el string es igual a "suma" entonces regresa la sigueinte funcion
 		return func(n1, n2 int) int { return n1 + n2 }
 	} else if tipo == "resta" {
 		return func(num1, num2 int) int { return num1 - num2 }
