@@ -1,0 +1,44 @@
+Como generar un testing en GO
+Paso 1: debemos crear un archivo go con el sufijo test Ejemplo -> main_test.go
+Paso 2: tener definido que vamos a evaluar para este ejemplo usaremos este archivo -> testing/main.go
+Paso 3: iniciamos a escribir nuestras pruebas ejemplo de codificación -> pruebas
+Paso 4: para generar testing debemos crear un mod para poder crearlo ejecutamos este comando go mod init nombreModulo (opcional), depende de la version de go 
+Paso 5: usamos el comando go test y este nos indicará si la prueba corrió bien
+
+
+Coverage
+Ejecutar los test con la bandera -coverprofile=coverage.out para obtener un coverage. Esto nos permite saber que parte del código hemos testeado y cual no:
+
+$ go test -coverprofile=coverage.out
+Para tener las metricas legibles del resultado del coverage usamos:
+
+ // ver resumen resumen en la terminal
+$ go tool cover -func=coverage.out
+
+// o ver resumen en el navegador y más a miagable a la lectura 
+$ go tool cover -html=coverage.out  
+
+
+
+Profiling
+Para ver el uso de CPU del codigo que testeamos, usamos
+$ go test -cpuprofile=cpu.out
+
+Para ver el resumen del uso del CPU:
+$ go tool pprof cpu.out
+
+Dentro de pprof escribimos top para ver como se han comportado los programas en nuestro test
+(pprof) top
+
+Además, dentro de pprof podemos inspeccionar el tiempo promedio de ejecución de cada línea de una función, usando el comando list <nombre_funcion>
+
+(pprof) list Fibonacci
+Tambien podemos ver el reporte del promedio de ejecución:
+
+en el navegador usando web
+o exportarlo en pdf usando pdf
+(pprof) web
+(pprof) pdf
+
+Para salir de (pprof) puedes usar quit o Ctrl + D
+
